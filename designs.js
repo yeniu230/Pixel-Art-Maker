@@ -10,9 +10,15 @@ function makeGrid(numWidth, numHeight) {
     for (var y = 1; y <= numHeight; y++) {tr += "<tr>" + td + "</tr>";}
     return tr;
 }
-let width = Number($("#input_width").val());
-let height = Number($("#input_height").val());
-$("[typy='submit']").click($("#pixel_canvas").append(makeGrid(10,10)));
+
+$("[type='submit']").click(function(){
+     var widthJun, heightJi, piexl;
+     widthJun = Number($("#input_width").val());
+     heightJi = Number($("#input_height").val());
+     piexl = makeGrid(widthJun,heightJi);
+     $("#pixel_canvas").append(piexl);
+})
+
 $("td").click(function(){
     let color = $("#colorPicker").val();
     $(this).css("background", color);
