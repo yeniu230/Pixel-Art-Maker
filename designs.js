@@ -3,16 +3,16 @@
 
 // When size is submitted by the user, call makeGrid()
 
-function makeGrid() {
+function makeGrid(numWidth, numHeight) {
     let tr = "";
     let td = "";
-    for (var y = 1; y <= 4; y++){
-    	for (var x = 1; x <= 4; x++) {td += "<td></td>";}
-    tr += "<tr>" + td + "</tr>";
-    };
+    for (var x = 1; x <= numWidth; x++) {td += "<td></td>";}
+    for (var y = 1; y <= numHeight; y++) {tr += "<tr>" + td + "</tr>";}
     return tr;
 }
-$("[typy='submit']").click($("#pixel_canvas").append(makeGrid()));
+let width = Number($("#input_width").val());
+let height = Number($("#input_height").val());
+$("[typy='submit']").click($("#pixel_canvas").append(makeGrid(10,10)));
 $("td").click(function(){
     let color = $("#colorPicker").val();
     $(this).css("background", color);
