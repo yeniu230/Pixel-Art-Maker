@@ -11,15 +11,17 @@ function makeGrid(numWidth, numHeight) {
     return tr;
 }
 
-$("[type='submit']").click(function(){
-     var widthJun, heightJi, piexl;
-     widthJun = Number($("#input_width").val());
-     heightJi = Number($("#input_height").val());
-     piexl = makeGrid(widthJun,heightJi);
-     $("#pixel_canvas").append(piexl);
-})
+ $("[type='submit']").on("click",function(event){
+    $("#pixel_canvas").empty();
+    var widthJun, heightJi, piexl;
+    widthJun = Number($("#input_width").val());
+    heightJi = Number($("#input_height").val());
+    piexl = makeGrid(widthJun,heightJi);
+    $("#pixel_canvas").append(piexl);
+    event.preventDefault();
+});
 
-$("td").click(function(){
+$("#pixel_canvas").on("click", "td", function(){
     let color = $("#colorPicker").val();
     $(this).css("background", color);
 })
